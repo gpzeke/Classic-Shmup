@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu7huf6ji41jq"]
+[gd_scene load_steps=7 format=3 uid="uid://cu7huf6ji41jq"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_1ojgv"]
 [ext_resource type="Texture2D" uid="uid://bawia3rsnyyw1" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="1_f56ev"]
 [ext_resource type="PackedScene" uid="uid://cj1ixdgsgyhq4" path="res://player.tscn" id="2_tcdjy"]
 
@@ -42,6 +43,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_1ojgv")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
