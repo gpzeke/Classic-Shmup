@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu7huf6ji41jq"]
+
+[ext_resource type="Texture2D" uid="uid://bawia3rsnyyw1" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="1_f56ev"]
+[ext_resource type="PackedScene" uid="uid://cj1ixdgsgyhq4" path="res://player.tscn" id="2_tcdjy"]
+
+[sub_resource type="Animation" id="Animation_cm66k"]
+resource_name = "scroll"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 240, 320), Rect2(0, -64, 240, 320)]
+}
+
+[sub_resource type="Animation" id="Animation_gco4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 240, 320)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34pwq"]
+_data = {
+"RESET": SubResource("Animation_gco4p"),
+"scroll": SubResource("Animation_cm66k")
+}
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_f56ev")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 240, 320)
+
+[node name="Player" parent="." instance=ExtResource("2_tcdjy")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_34pwq")
+}
+autoplay = "scroll"
