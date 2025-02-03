@@ -17,11 +17,3 @@ func display_digits(n):
 	var s = "%08d" % n
 	for i in 8:
 		get_child(i).texture.region = Rect2(digit_coords[int(s[i])], Vector2(8, 8))
-
-
-func _ready() -> void:
-	pass
-
-
-func _process(delta: float) -> void:
-	pass

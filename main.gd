@@ -10,12 +10,6 @@ func _ready() -> void:
 	game_over.hide()
 	start_button.show()
 
-func new_game() -> void:
-	score = 0
-	$CanvasLayer/UI.update_score(score)
-	$Player.start()
-	spawn_enemies()
-
 func spawn_enemies() -> void:
 	for x in range(9):
 		for y in range(3):
@@ -24,7 +18,7 @@ func spawn_enemies() -> void:
 			add_child(e)
 			e.start(pos)
 			e.died.connect(_on_enemy_died)
-			
+
 func _on_enemy_died(value) -> void:
 	score += value
 	$CanvasLayer/UI.update_score(score)
@@ -36,6 +30,11 @@ func _on_player_died() -> void:
 	game_over.hide()
 	start_button.show()
 
+func new_game() -> void:
+	score = 0
+	$CanvasLayer/UI.update_score(score)
+	$Player.start()
+	spawn_enemies()
 
 func _on_start_pressed() -> void:
 	start_button.hide()
